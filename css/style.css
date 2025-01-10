@@ -1,22 +1,41 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f3e4;
-    color: #3a4d59;
-    margin: 0;
-    padding: 20px;
-}
-
-h1, h2 {
-    font-family: 'Lobster', cursive;
-    color: #b85c5c;
-
-}
 
 img {
     width: 200px;
     border-radius: 20px;
-    
+    animation: spinIn 2s ease-out;
 }
+
+@keyframes spinIn {
+    0% {
+        transform: rotate(-360deg) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+
+h1 {
+    color: #b85c5c;
+    font-size: 2.5rem;
+    overflow: hidden;
+    border-right: 3px solid #b85c5c; 
+    white-space: nowrap;
+    width: 0;
+    animation: typing 3s steps(20, end) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 
 table {
     border-collapse: collapse;
@@ -24,16 +43,27 @@ table {
     margin-bottom: 20px;
 }
 
-table, th, td {
-    border: 1px solid #333;
-}
-
 th, td {
+    border: 1px solid #333;
     padding: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: bounceIn 1s ease-out forwards;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: small;
+th { animation-delay: 0.2s; }
+td { animation-delay: 0.4s; }
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
